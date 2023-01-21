@@ -87,9 +87,16 @@
     <script>
         $(document).ready(function () {
             fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then(res => res.json()).then(data => {
-                console.log(data['temp'])
+                console.log(data['temp'], data['icon'])
+                let icn = data['icon']
+                let icn_html = icn
+
                 let number = data['temp']
                 let temp_html = number 
+
+                $('#icon').empty
+                $('#icon').text(icn_html)
+                
                 $('#temp').empty
                 $('#temp').text(temp_html)
 
@@ -101,7 +108,7 @@
 <body>
     <div class="mytitle">
         <h1>내 생애 최고의 영화들</h1>
-        <div>현재 서울의 날씨 : <span id="temp">20</span>도</div>
+        <div>현재 서울의 날씨 : <span><img id="icon" src="http://openweathermap.org/img/w/01d.png"></span><span id="temp">20</span>도</div>
         <button onclick="hey()">영화 기록하기</button>
     </div>
     <div class="mypost">
